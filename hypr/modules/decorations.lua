@@ -4,52 +4,52 @@
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
-    general = {
-        gaps_in          = 8,
-        gaps_out         = 20,
+	general = {
+		gaps_in = 10,
+		gaps_out = 20,
 
-        border_size      = 3,
+		border_size = 4,
 
-        col              = {
-            active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
-        },
+		col = {
+			active_border = { colors = { "rgba(33ccffee)", "rgba(BC13FEFF)" }, angle = 45 },
+			inactive_border = "rgba(FFFFFF10)",
+		},
 
-        -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false,
+		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
+		resize_on_border = false,
 
-        -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-        allow_tearing    = false,
+		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
+		allow_tearing = false,
 
-        layout           = "dwindle",
-    },
+		layout = "dwindle",
+	},
 
-    decoration = {
-        rounding         = 10,
-        rounding_power   = 3,
+	decoration = {
+		rounding = 18,
+		rounding_power = 5,
 
-        -- Change transparency of focused and unfocused windows
-        active_opacity   = 1,
-        inactive_opacity = 1,
+		-- Change transparency of focused and unfocused windows
+		active_opacity = 1,
+		inactive_opacity = 0.9,
 
-        shadow           = {
-            enabled      = true,
-            range        = 20,
-            render_power = 3,
-            color        = 0xee1a1a1a,
-        },
+		shadow = {
+			enabled = true,
+			range = 30,
+			render_power = 4,
+			color = 0x44111111,
+		},
 
-        blur             = {
-            enabled  = true,
-            size     = 3,
-            passes   = 1,
-            vibrancy = 0.1696,
-        },
-    },
+		blur = {
+			enabled = true,
+			size = 8,
+			passes = 3,
+			vibrancy = 0.1696,
+		},
+	},
 
-    animations = {
-        enabled = true,
-    },
+	animations = {
+		enabled = true,
+	},
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
@@ -58,27 +58,94 @@ hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36,
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
 hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
 hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
-
+hl.curve("premium", {
+	type = "spring",
+	mass = 1,
+	stiffness = 120,
+	dampening = 18,
+})
 -- Default springs
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
 hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windows", enabled = true, speed = 4.79, spring = "easy" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.1, spring = "easy", style = "popin 87%" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.49, bezier = "linear", style = "popin 87%" })
+hl.animation({ leaf = "border", enabled = true, speed = 8, bezier = "easeOutQuint" })
+hl.animation({ leaf = "windows", enabled = true, speed = 8, spring = "easy" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 8, spring = "premium", style = "slide bottom" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 8, bezier = "easeOutQuint", style = "slide" })
 hl.animation({ leaf = "fadeIn", enabled = true, speed = 1.73, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.46, bezier = "almostLinear" })
 hl.animation({ leaf = "fade", enabled = true, speed = 3.03, bezier = "quick" })
-hl.animation({ leaf = "layers", enabled = true, speed = 3.81, bezier = "easeOutQuint" })
-hl.animation({ leaf = "layersIn", enabled = true, speed = 4, bezier = "easeOutQuint", style = "fade" })
-hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear", style = "fade" })
+hl.animation({ leaf = "layers", enabled = true, speed = 6, bezier = "easeOutQuint" })
+hl.animation({ leaf = "layersIn", enabled = true, speed = 6, bezier = "easeOutQuint", style = "fade" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 5, bezier = "easeOutQuint", style = "fade" })
 hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 4, bezier = "almostLinear" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 3, bezier = "almostLinear", style = "slide" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 3, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 3, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "easeOutQuint" })
+
+hl.layer_rule({
+	match = {
+		namespace = "swaync-control-center",
+	},
+
+	animation = "slide top",
+})
+
+hl.window_rule({
+	match = {
+		class = "firefox",
+	},
+	animation = "slide",
+	workspace = "10",
+})
+
+hl.layer_rule({
+	match = {
+		namespace = "rofi",
+	},
+
+	animation = "slide bottom",
+})
+
+hl.window_rule({
+	match = {
+		namespace = "pavucontrol",
+	},
+	float = true,
+	center = true,
+})
+hl.window_rule({
+	match = {
+		modal = true,
+	},
+
+	dim_around = true,
+	float = true,
+})
+
+hl.window_rule({
+	match = {
+		namespace = "app.zen_browser.zen",
+	},
+	float = false,
+})
+
+hl.window_rule({
+	match = {
+		namespace = "virt-manager",
+	},
+	float = true,
+	workspace = 10,
+})
+
+hl.window_rule({
+	match = {
+		namespace = "kitty",
+	},
+	tile = true,
+})
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"

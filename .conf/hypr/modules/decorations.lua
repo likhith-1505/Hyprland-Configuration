@@ -68,7 +68,7 @@ hl.curve("premium", {
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
 hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "border", enabled = true, speed = 8, bezier = "easeOutQuint" })
+hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "easeOutQuint" })
 hl.animation({ leaf = "windows", enabled = true, speed = 8, spring = "easy" })
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 8, spring = "premium", style = "slide bottom" })
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 8, bezier = "easeOutQuint", style = "slide" })
@@ -76,13 +76,13 @@ hl.animation({ leaf = "fadeIn", enabled = true, speed = 1.73, bezier = "almostLi
 hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.46, bezier = "almostLinear" })
 hl.animation({ leaf = "fade", enabled = true, speed = 3.03, bezier = "quick" })
 hl.animation({ leaf = "layers", enabled = true, speed = 6, bezier = "easeOutQuint" })
-hl.animation({ leaf = "layersIn", enabled = true, speed = 6, bezier = "easeOutQuint", style = "fade" })
-hl.animation({ leaf = "layersOut", enabled = true, speed = 5, bezier = "easeOutQuint", style = "fade" })
+hl.animation({ leaf = "layersIn", enabled = true, speed = 6, bezier = "easeOutQuint", style = "slide top" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 5, bezier = "easeOutQuint", style = "slide top" })
 hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 4, bezier = "almostLinear" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 3, bezier = "almostLinear", style = "slide" })
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 3, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 3, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 3, bezier = "almostLinear", style = "slide" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 3, bezier = "almostLinear", style = "slide" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "easeOutQuint" })
 
 hl.layer_rule({
@@ -98,7 +98,7 @@ hl.window_rule({
 		class = "firefox",
 	},
 	animation = "slide",
-	workspace = "10",
+	workspace = 4,
 })
 
 hl.layer_rule({
@@ -111,10 +111,11 @@ hl.layer_rule({
 
 hl.window_rule({
 	match = {
-		namespace = "pavucontrol",
+		class = "org.pulseaudio.pavucontrol",
 	},
 	float = true,
 	center = true,
+	animation = "fade",
 })
 hl.window_rule({
 	match = {
@@ -127,14 +128,21 @@ hl.window_rule({
 
 hl.window_rule({
 	match = {
-		namespace = "app.zen_browser.zen",
+		class = "app.zen_browser.zen",
 	},
 	float = false,
+	workspace = 5,
 })
-
 hl.window_rule({
 	match = {
-		namespace = "virt-manager",
+		class = "librewolf",
+	},
+	workspace = 2,
+	float = false,
+})
+hl.window_rule({
+	match = {
+		class = "virt-manager",
 	},
 	float = true,
 	workspace = 10,
@@ -142,9 +150,23 @@ hl.window_rule({
 
 hl.window_rule({
 	match = {
-		namespace = "kitty",
+		class = "kitty",
 	},
 	tile = true,
+})
+
+hl.window_rule({
+	match = {
+		title = "Kali on QEMU/KVM",
+	},
+	workspace = 9,
+})
+
+hl.window_rule({
+	match = {
+		title = "fedora on QEMU/KVM",
+	},
+	workspace = 7,
 })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/

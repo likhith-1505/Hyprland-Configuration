@@ -10,4 +10,4 @@ require("modules.layouts")
 require("modules.decorations")
 require("modules.windowrules")
 require("modules.workspace")
-local splash = false
+require("modules.events")
